@@ -150,7 +150,12 @@ class FrEreporting(models.Model):
 
     @api.model
     def _vat_periodicity_selection(self):
-        return self.env["res.company"]._fr_vat_periodicity_selection()
+        #return self.env["res.company"]._fr_vat_periodicity_selection()
+        return [
+            ("1", "Monthly"),
+            ("3", "Quarterly"),
+            ("12", "Yearly"),
+        ]
 
     @api.depends("company_id")
     def _compute_vat_periodicity(self):
