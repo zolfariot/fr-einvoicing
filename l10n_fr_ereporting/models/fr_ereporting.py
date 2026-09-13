@@ -335,7 +335,7 @@ class FrEreporting(models.Model):
         vat_return_obj = self.env["l10n.fr.account.vat.return"]
         last_vat_return = vat_return_obj.search(
             [("company_id", "=", company.id), ("state", "!=", "manual")],
-            order="start_date desc",
+            limit=1, order="start_date desc",
         )
         if not last_vat_return:
             raise UserError(
